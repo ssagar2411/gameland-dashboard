@@ -2,6 +2,8 @@ import { filter } from 'lodash';
 import { sentenceCase } from 'change-case';
 import { useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
+import Switch from '@mui/material/Switch';
+import { alpha, styled } from '@mui/material/styles';
 // material
 import {
   Card,
@@ -31,11 +33,10 @@ import USERLIST from '../_mock/user';
 // ----------------------------------------------------------------------
 
 const TABLE_HEAD = [
-  { id: 'name', label: 'Name', alignRight: false },
-  { id: 'company', label: 'Company', alignRight: false },
-  { id: 'role', label: 'Role', alignRight: false },
-  { id: 'isVerified', label: 'Verified', alignRight: false },
-  { id: 'status', label: 'Status', alignRight: false },
+  { id: 'name', label: 'Bookies Name', alignRight: false },
+  { id: 'url', label: 'URL', alignRight: false },
+  { id: 'isActive', label: 'Status', alignRight: false },
+  { id: 'action', label: 'Active', alignRight: false },
   { id: '' },
 ];
 
@@ -137,7 +138,7 @@ export default function User() {
       <Container>
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
           <Typography variant="h4" gutterBottom>
-            User
+            Root Page Scraper
           </Typography>
           <Button variant="contained" component={RouterLink} to="#" startIcon={<Iconify icon="eva:plus-fill" />}>
             New User
@@ -180,19 +181,17 @@ export default function User() {
                           <Stack direction="row" alignItems="center" spacing={2}>
                             <Avatar alt={name} src={avatarUrl} />
                             <Typography variant="subtitle2" noWrap>
-                              {name}
+                              Maximbet#NBA
                             </Typography>
                           </Stack>
                         </TableCell>
-                        <TableCell align="left">{company}</TableCell>
-                        <TableCell align="left">{role}</TableCell>
-                        <TableCell align="left">{isVerified ? 'Yes' : 'No'}</TableCell>
+                        <TableCell align="left" Wrap>https://maximbet.com/sportsbook/competition/15/basketball</TableCell>
                         <TableCell align="left">
-                          <Label variant="ghost" color={(status === 'banned' && 'error') || 'success'}>
+                          <Label variant="ghost" color={(status === 'inactive' && 'error') || 'success'}>
                             {sentenceCase(status)}
                           </Label>
                         </TableCell>
-
+                        <TableCell align="left"><Switch  defaultChecked color="secondary" /></TableCell>
                         <TableCell align="right">
                           <UserMoreMenu />
                         </TableCell>
